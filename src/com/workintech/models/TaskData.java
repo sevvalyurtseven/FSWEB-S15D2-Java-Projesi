@@ -1,6 +1,7 @@
 package com.workintech.models;
 
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class TaskData {
@@ -30,6 +31,14 @@ public class TaskData {
             return this.getUnion(bobsTasks, annsTasks, carolsTasks);
         }
         return new HashSet<>();
+    }
+
+    private Set<Task> getUnion(Set<Task>... sets){
+        HashSet<Task> total = new LinkedHashSet<>();
+        for(Set<Task> taskSet : sets){
+            total.addAll(taskSet);
+        }
+        return total;
     }
 
     public Set<Task> getAnnsTasks() {
