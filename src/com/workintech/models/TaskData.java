@@ -1,5 +1,6 @@
 package com.workintech.models;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class TaskData {
@@ -13,6 +14,22 @@ public class TaskData {
         this.bobsTasks = bobsTasks;
         this.carolsTasks = carolsTasks;
         this.unassignedTasks = unassignedTasks;
+    }
+
+    public Set<Task> getTasks(String assignee){
+        if(assignee.equalsIgnoreCase("ann")){
+            return this.getAnnsTasks();
+        }
+        if (assignee.equalsIgnoreCase("bob")) {
+            return this.getBobsTasks();
+        }
+        if(assignee.equalsIgnoreCase("carol")){
+            return this.getCarolsTasks();
+        }
+        if(assignee.equalsIgnoreCase("all")){
+            return this.getUnion(bobsTasks, annsTasks, carolsTasks);
+        }
+        return new HashSet<>();
     }
 
     public Set<Task> getAnnsTasks() {
