@@ -41,6 +41,12 @@ public class TaskData {
         return total;
     }
 
+    public Set<Task> getDifferences(Set<Task> first, Set<Task> second){
+        Set<Task> differences = new HashSet<>(first);
+        differences.removeAll(second);
+        return differences;
+    }
+
     public Set<Task> getAnnsTasks() {
         return annsTasks;
     }
