@@ -17,4 +17,24 @@ public class Task {
         this.priority = priority;
         this.status = status;
     }
+
+    public String getProject() {
+        return project;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getAssignee() {
+        return assignee;
+    }
+
+    public Priority getPriority() {
+        return priority;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
 }
