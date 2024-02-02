@@ -35,6 +35,7 @@ public class Main {
         Set<Task> bobsTasks = new LinkedHashSet<>();
         bobsTasks.add(taskForBob);
         bobsTasks.add(taskForBob2);
+        bobsTasks.add(taskForAnn);
 
         Set<Task> carolsTasks = new LinkedHashSet<>();
         carolsTasks.add(taskForCarol);
@@ -69,6 +70,12 @@ public class Main {
         System.out.println("******* 3 *********");
 
         SetUtils.printSet(taskData.getDifferences(allTasks, taskData.getTasks("all")));
+
+        //Birden fazla çalışana atanmış task var mı ? Varsa bunlar hangileri ?
+
+        System.out.println("******* 4 *********");
+
+        SetUtils.printSet(taskData.getIntersection(bobsTasks, annsTasks));
 
 
 

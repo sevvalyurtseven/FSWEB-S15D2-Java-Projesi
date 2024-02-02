@@ -47,6 +47,13 @@ public class TaskData {
         return differences;
     }
 
+    public Set<Task> getIntersection(Set<Task> first, Set<Task> second){
+        Set<Task> differences = new HashSet<>(first);
+        differences.retainAll(second); //kesisimi bulduk
+        return differences;
+    }
+
+
     public Set<Task> getAnnsTasks() {
         return annsTasks;
     }
