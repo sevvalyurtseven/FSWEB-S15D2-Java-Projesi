@@ -17,28 +17,26 @@ public class TaskData {
         this.unassignedTasks = unassignedTasks;
     }
 
-    public Set<Task> getTasks(String assignee){
-        if(assignee.equalsIgnoreCase("ann")){
-            return this.getAnnsTasks();
-        }
-        if (assignee.equalsIgnoreCase("bob")) {
-            return this.getBobsTasks();
-        }
-        if(assignee.equalsIgnoreCase("carol")){
-            return this.getCarolsTasks();
-        }
-        if(assignee.equalsIgnoreCase("all")){
-            return this.getUnion(bobsTasks, annsTasks, carolsTasks);
+   public Set<Task> getTasks(String name){
+        switch (name) {
+            case "ann":
+                return this.annsTasks;
+            case "bob":
+                return this.bobsTasks;
+            case "carol":
+                return this.carolsTasks;
+            case "all":
+                return getUnion(bobsTasks, annsTasks, carolsTasks);
         }
         return new HashSet<>();
-    }
+   }
 
     private Set<Task> getUnion(Set<Task>... sets){
-        HashSet<Task> total = new LinkedHashSet<>();
-        for(Set<Task> taskSet : sets){
-            total.addAll(taskSet);
+        HashSet<Task> allTasks = new LinkedHashSet<>();
+        for(Set<Task> tasks : sets){
+            allTasks.addAll(tasks);
         }
-        return total;
+        return allTasks;
     }
 
     public Set<Task> getDifferences(Set<Task> first, Set<Task> second){
@@ -48,9 +46,9 @@ public class TaskData {
     }
 
     public Set<Task> getIntersection(Set<Task> first, Set<Task> second){
-        Set<Task> differences = new HashSet<>(first);
-        differences.retainAll(second); //kesisimi bulduk
-        return differences;
+        Set<Task> intersection = new HashSet<>(first);
+        intersection.retainAll(second); //kesisimi bulduk
+        return intersection;
     }
 
 
